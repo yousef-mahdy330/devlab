@@ -1,0 +1,25 @@
+name: Main Branch Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  job1:
+    name: First Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run first job
+        run: echo "First job executed successfully"
+
+  job2:
+    name: Second Job
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Run second job
+        run: echo "Second job executed successfully"
